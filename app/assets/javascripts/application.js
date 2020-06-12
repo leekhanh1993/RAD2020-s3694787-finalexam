@@ -30,9 +30,6 @@ $(document).on('turbolinks:load', function () {
             },
             onClickEvent: function () {
                 var value = $("#searchform").getSelectedItemData();
-                var newConZone = $(`<div>${value}</div>`);
-
-                $('.addconzone').before(newConZone);
 
                 //close search
                 $('.searchfield').hide();
