@@ -1,0 +1,2 @@
+class CountryZone < ApplicationRecord
+end
