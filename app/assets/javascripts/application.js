@@ -30,9 +30,7 @@ $(document).on('turbolinks:load', function () {
             },
             onClickEvent: function () {
                 var value = $("#searchform").getSelectedItemData();
-                var newConZone = $(`<% Time.use_zone('${value}') do%>
-                <%= Time.zone.now%>
-                <%end%>`);
+                var newConZone = $(`<div>${value}</div>`);
 
                 $('.addconzone').before(newConZone);
 
