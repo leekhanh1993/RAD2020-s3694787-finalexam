@@ -16,4 +16,12 @@ class StaticPagesController < ApplicationController
     end
     render json: @countryzone
   end
+
+  def addconzone
+    Time.use_zone('Melbourne') do
+      @default_timezone = Time.zone
+    end
+
+    render partial: "country_zone", locals: {zone: params[:zonename], default_timezone: @default_timezone}
+  end
 end

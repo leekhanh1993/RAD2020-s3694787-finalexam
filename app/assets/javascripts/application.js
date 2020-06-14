@@ -21,7 +21,7 @@
 
 $(document).on('turbolinks:load', function () {
     var options = {
-        url: "search.js",
+        url: "search",
         theme: "bootstrap",
         list: {
             maxNumberOfElements: 5,
@@ -30,7 +30,11 @@ $(document).on('turbolinks:load', function () {
             },
             onClickEvent: function () {
                 var value = $("#searchform").getSelectedItemData();
-
+                // $('.list-city').append("<%= j render partial: 'country_zone', locals: {zone: '#{value}'} %>");
+                // $('.list-city').append("<%= j render 'country_zone' %>");
+                $.get(`addconzone?zonename=${value}`, function(data, status){
+                    $(".addconzone").before(data)
+                  });
                 //close search
                 $('.searchfield').hide();
                 $('.list-city').show();

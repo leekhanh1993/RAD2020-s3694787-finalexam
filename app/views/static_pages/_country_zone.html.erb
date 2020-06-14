@@ -1,0 +1,42 @@
+<!-- one exmaple -->
+
+<% Time.use_zone(zone) do%>
+<div class="row my-4" style="border-bottom: solid 1px black;">
+    <div class="col-12 pb-3">
+        <div class="row">
+            <!-- Colum nam -->
+            <div class="col-8">
+                <h3><%= Time.zone.name%></h3>
+                <% @tmp = (Time.zone.utc_offset - default_timezone.utc_offset) < 0 ? "-" : "+" %>
+                <h5><%= @tmp + TimeDifference.between(default_timezone.now.strftime("%d-%m-%Y %H:%M:%S"), 
+                    Time.zone.now.strftime("%d-%m-%Y %H:%M:%S")).in_hours.to_i.to_s%>h</h5>
+
+            </div>
+
+            <!-- Colum time -->
+            <div class="col-4">
+                <div class="float-right">
+                    <div class="float-right">
+                        <!-- 12 hours -->
+                        <h3 class="12htype"><%= Time.zone.now.strftime("%I:%M %p")%></h3>
+
+                        <!-- 24 hours -->
+                        <h3 class="24htype"><%= Time.zone.now.strftime("%H:%M")%></h3>
+                    </div>
+                    <div class="list-inline">
+                        <%if default_timezone.now.strftime("%-d").to_i > Time.zone.now.strftime("%-d").to_i%>
+                        <div class="list-inline-item">Yesterday</div>
+                        <%elsif default_timezone.now.strftime("%-d").to_i < Time.zone.now.strftime("%-d").to_i%>
+                        <div class="list-inline-item">Tomorrow</div>
+                        <%else%>
+                        <div class="list-inline-item">Today</div>
+                        <%end%>
+                        <%= time_status(Time.zone)%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%end%>
+<!-- one example -->
